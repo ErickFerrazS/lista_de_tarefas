@@ -1,11 +1,10 @@
 import {useState} from "react"
 
-const TodoForm = (addTodo) => {
+const TodoForm = ({addTodo}) => {
     const [value, setValue] = useState("")
     const [category, setCategory] = useState("")
 
     const handleSubmit = (e) => {
-        console.log('alô?');
         e.preventDefault();
         if(!value || !category) return;
         addTodo(value, category);
@@ -23,23 +22,25 @@ const TodoForm = (addTodo) => {
                     value={value}
                     onChange={(e) => setValue(e.target.value)} 
                 />
+                <button type="submit">Criar tarefa</button>
             </form>
-            <select>
-            <option 
-                value={category} 
-                onChange={(e) => setCategory(e.target.value)}>Selecione uma categoria
-            </option>
-            <option 
-                value="Trabalho">Trabalho
-            </option>
-            <option 
-                value="Pessoal">Pessoal
-            </option>
-            <option 
-                value="Estudos">Estudos
-            </option>
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}>
+                <option 
+                    value=""
+                >Selecione uma categoria
+                </option>
+                <option 
+                    value="Trabalho">Trabalho
+                </option>
+                <option 
+                    value="Pessoal">Pessoal
+                </option>
+                <option 
+                    value="Estudos">Estudos
+                </option>
             </select>
-            <button type="submit">Criar tarefa</button>
         </>
     )
 }
